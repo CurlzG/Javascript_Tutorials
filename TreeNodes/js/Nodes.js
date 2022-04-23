@@ -14,6 +14,7 @@ class BST {
     this.root = null;
   }
   insert(value){
+    //Code from Medium Article about Binary Trees https://medium.com/swlh/binary-search-tree-in-javascript-31cb74d8263b
     var newNode = new Node(value,xpos,ypos);
     if(this.root === null){
         this.root = newNode;
