@@ -13,6 +13,38 @@ class BST {
   constructor(){
     this.root = null;
   }
+  insert(value){
+    var newNode = new Node(value,xpos,ypos);
+    if(this.root === null){
+        this.root = newNode;
+        return this;
+    }
+    let current = this.root;
+    while(current){
+        if(value === current.value) return undefined;
+        if(value < current.value){
+            if(current.left === null){
+                current.left = newNode;
+                xpos = xpos-35;
+                ypos = ypos + 40;
+                current.left.x = xpos;
+                current.left.y = ypos;
+                return this;
+            }
+            current = current.left;
+        } else {
+            if(current.right === null){
+                current.right = newNode;
+                xpos = xpos + 35;
+                ypos = ypos + 40;
+                current.right.x = xpos;
+                current.right.y = ypos;
+                return this;
+            } 
+            current = current.right;
+        }
+    }
+}
 }
 //Adding the Nodes In
 function insert(root,value){
