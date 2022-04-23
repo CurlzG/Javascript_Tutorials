@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BST Tree</title>
+  <!--  Simple reset to delete the margins  -->
+  <style>
+    body { margin: 0; }
+    canvas { width: 100%; height: 100% }
+  </style>
+  <!--  Three.js CDN  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+</head>
+<body>
+  <!--  Our code  -->
+  <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #000000;">
+  </canvas>
+  <script type="module">
+      import { root } from "./js/Nodes.js";
+  //console.log(root);
+  displayArray(root);
+  function displayArray(family) {
+  let canvas = document.getElementById("myCanvas")
+  var context = canvas.getContext("2d")
+  context.font = "20px Georgia";
+  context.beginPath();
+  context.arc(root.x+5, root.y-7, 10, 0, 2 * Math.PI);
+  context.stroke();
+  context.fillText(root.value, root.x, root.y);
+  travse(root,context);
+  
+}
+function travse(root,context){
+  if(root.left !== null){
+    context.beginPath();
+    context.arc(root.left.x+10, root.left.y-7, 12, 0, 2 * Math.PI);
+    context.fillText(root.left.value, root.left.x, root.left.y); 
+    context.moveTo(root.x,root.y);
+    context.lineTo(root.left.x,root.left.y-15);
+    context.stroke();
+    travse(root.left,context);
+  }
+  if(root.right !== null){
+    context.beginPath();
+    context.arc(root.right.x+10, root.right.y-7, 12, 0, 2 * Math.PI);
+    context.fillText(root.right.value, root.right.x, root.right.y);
+    context.moveTo(root.x,root.y);
+    context.lineTo(root.right.x,root.right.y);
+    context.stroke();
+    travse(root.right,context);
+  }
+  
+}
+  </script>
+
+  
+
+</body>
+</html>
